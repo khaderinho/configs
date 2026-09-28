@@ -28,6 +28,7 @@ set $ws9 "9"
 bindsym $mod+Return exec alacritty
 
 bindsym $mod+space exec rofi -show run 
+bindsym $mod+w exec rofi -show window 
 
 bindsym $mod+period exec amixer set Master 5%+
 bindsym $mod+comma exec amixer set Master 5%-

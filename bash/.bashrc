@@ -23,3 +23,5 @@ alias u="sudo dnf update && sudo dnf upgrade"
 alias s="sudo dnf search"
 alias i="sudo dnf install"
 alias r="sudo dnf remove"
+
+alias vim="vimx"
