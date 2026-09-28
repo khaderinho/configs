@@ -25,3 +25,7 @@ alias i="sudo dnf install"
 alias r="sudo dnf remove"
 
 alias vim="vimx"
+
+# >>> Codex installer >>>
+export PATH="$HOME/.local/bin:$PATH"
+# <<< Codex installer <<<

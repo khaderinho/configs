@@ -18,3 +18,5 @@ set cin
 
 set noerrorbells
 set noswapfile
+
+set clipboard=unnamedplus

@@ -1,6 +1,8 @@
-exec setxkbmap -layout us,ara -variant ,digits -option grp:alt_shift_toggle caps:escape 
+exec --no-startup-id setxkbmap -layout us,ara -variant ,digits -option grp:alt_shift_toggle caps:escape
 
-exec feh --bg-fill ~/.config/wallpapers/wallpaper.jpg  ~/.config/wallpapers/wallpaper2.jpg
+exec --no-startup-id feh --bg-fill ~/.config/wallpapers/wallpaper.jpg  ~/.config/wallpapers/wallpaper2.jpg 
+
+exec --no-startup-id /usr/libexec/lxqt-policykit-agent
 
 set $mod Mod4
 floating_modifier $mod
@@ -30,9 +32,9 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+space exec rofi -show run 
 bindsym $mod+w exec rofi -show window 
 
-bindsym $mod+period exec amixer set Master 5%+
-bindsym $mod+comma exec amixer set Master 5%-
-bindsym $mod+m exec amixer set Master toggle
+bindsym $mod+period exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
+bindsym $mod+comma exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym $mod+m exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
 bindsym $mod+p exec scrot -u '%Y-%m-%d_%H-%M-%S_window.png' -e 'mv $f ~/screenshots/'
 bindsym $mod+shift+p exec scrot -s '%Y-%m-%d_%H-%M-%S_window.png' -e 'mv $f ~/screenshots/'

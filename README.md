@@ -1,20 +1,28 @@
 # Configs
 
-Personal configuration files and installation scripts for a Fedora Server setup with an i3/BSPWM based X11 desktop.
+Personal configuration files and installation scripts for a Fedora Server setup with an i3 based X11 desktop.
 
 ## Fedora Server installation
 
 Start with a fresh Fedora Server installation and a user account that can run commands with `sudo`. Clone this repository, enter it, and run:
 
 ```console
-git clone git@github.com:khedrinhoo/configs.git
+git clone https://github.com/khedrinhoo/configs.git
 cd configs
 bash fedora_build/install.sh
 ```
 
-The scripts expect an internet connection and GNU Stow. The installer installs GNU Stow through DNF. Run the installer as your regular user, not as root, so the configuration files are linked into that user's home directory. `sudo` is used by the scripts for system package and service operations.
+Run the installer as your regular user, not as root. It requires an internet connection and a sudo-enabled account, and installs the setup tools through DNF. `sudo` is used for system package and service operations. The default install includes all components; optional groups can be omitted, for example:
 
-If an installation script fails, the installer reports the failed script names and exits without linking the configurations. Resolve the reported issue and run the installer again; its package and link steps can be repeated.
+```console
+bash fedora_build/install.sh --without virtualization,bluetooth,web
+```
+
+Supported optional components are `bluetooth`, `dev`, `media`, `virtualization`, and `web`. Audio, fonts, networking, terminal tools, and the i3 desktop are part of the core setup. Repository setup is skipped when its corresponding optional component is omitted. Install scripts run in a fixed order; package failures are reported, and configuration linking runs only if package setup succeeds.
+
+On the text-only Fedora Server install, log in on a local TTY and run `startx` to start i3. The configuration starts a PolicyKit authentication agent for GUI tools such as virt-manager.
+
+If an installation script fails, the installer reports the failed script names and exits without linking the configurations. Resolve the reported issue and run the installer again; package operations are repeatable. Existing `.bashrc` files are backed up before the repository version is linked.
 
 ## Configuration links
 
@@ -26,4 +34,4 @@ To create or refresh the links separately, run:
 bash fedora_build/stow.sh
 ```
 
-GNU Stow leaves conflicting existing files in place and reports the conflict. Move or back up the conflicting file, then run the command again.
+GNU Stow reports other conflicting files and leaves them in place. Move or back them up, then run the command again.

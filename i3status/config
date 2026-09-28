@@ -3,18 +3,11 @@ general {
     interval = 1
 }
 
-order += "ethernet enp4s0"
 order += "disk /"
 order += "cpu_usage"
-order += "cpu_temperature 0"
 order += "memory"
 order += "volume master"
 order += "time"
-
-ethernet enp4s0 {
-    format_up = "NET %ip"
-    format_down = "NET down"
-}
 
 disk "/" {
     format = "DISK %avail"
@@ -22,11 +15,6 @@ disk "/" {
 
 cpu_usage {
     format = "CPU %usage"
-}
-
-cpu_temperature 0 {
-    format = "TEMP %degrees°C"
-    path = "/sys/class/thermal/thermal_zone0/temp"
 }
 
 memory {
