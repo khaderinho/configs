@@ -11,13 +11,10 @@ fi
 
 mkdir -p "$HOME/.config"
 
-# Remove an existing bash configuration before Stow creates its symlink.
 rm -f "$HOME/.bashrc"
 
-# These packages contain files that belong directly in the home directory.
 stow --dir="$repo_dir" --target="$HOME" --stow bash vim xorg
 
-# All other configuration packages are linked beneath ~/.config.
 config_packages=()
 for package_dir in "$repo_dir"/*/; do
     [[ -d "$package_dir" ]] || continue
@@ -36,4 +33,4 @@ if ((${#config_packages[@]})); then
     done
 fi
 
-printf 'Configuration links created successfully.\n'
+printf 'Links created successfully.\n'

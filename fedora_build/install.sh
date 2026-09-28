@@ -4,7 +4,7 @@ set -euo pipefail
 script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
 # Directories
-mkdir -p "$HOME/.src" "$HOME/.bin" "$HOME/.config"
+mkdir -p "$HOME/.src" "$HOME/.bin" "$HOME/.config" 
 
 failed_scripts=()
 repositories_script="$script_dir/repositories.sh"
