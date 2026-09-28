@@ -11,11 +11,11 @@ while (($#)); do
 done
 
 if ((enable_bluetooth)) && systemctl list-unit-files --type=service --no-legend bluetooth.service | grep -q bluetooth.service; then
-    sudo systemctl enable --now bluetooth.service
+    sudo env -u XDG_RUNTIME_DIR -u DBUS_SESSION_BUS_ADDRESS systemctl --system --no-ask-password enable --now bluetooth.service
 fi
 
 if systemctl list-unit-files --type=service --no-legend NetworkManager.service | grep -q NetworkManager.service; then
-    sudo systemctl enable --now NetworkManager.service
+    sudo env -u XDG_RUNTIME_DIR -u DBUS_SESSION_BUS_ADDRESS systemctl --system --no-ask-password enable --now NetworkManager.service
 fi
 
 if systemctl --user list-unit-files --no-legend pipewire.socket pipewire-pulse.socket wireplumber.service 2>/dev/null | grep -q pipewire.socket; then

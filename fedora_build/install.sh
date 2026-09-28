@@ -57,14 +57,16 @@ fi
 components=(audio bluetooth dev fonts media network terminal virtualization web window_manager)
 for component in "${components[@]}"; do
     [[ -n "${skipped[$component]:-}" ]] && continue
-    script="$script_dir/$component.sh"
+    script_name="$component"
+    [[ "$component" == virtualization ]] && script_name=virtual
+    script="$script_dir/$script_name.sh"
     if [[ ! -f "$script" ]]; then
         printf 'Required install script is missing: %s\n' "$script" >&2
-        failed_scripts+=("$component.sh (missing)")
+        failed_scripts+=("$script_name.sh (missing)")
         continue
     fi
     if ! bash "$script"; then
-        failed_scripts+=("$component.sh")
+        failed_scripts+=("$script_name.sh")
     fi
 done
 
