@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-sudo dnf install -y alacritty tmux vim neovim nnn htop fzf unzip btop
+sudo dnf install -y alacritty tmux vim nnn htop fzf unzip 

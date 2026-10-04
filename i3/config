@@ -1,7 +1,5 @@
 exec --no-startup-id setxkbmap -layout us,ara -variant ,digits -option grp:alt_shift_toggle caps:escape
 
-exec --no-startup-id feh --bg-fill ~/.config/wallpapers/wallpaper.jpg  ~/.config/wallpapers/wallpaper2.jpg 
-
 exec --no-startup-id /usr/libexec/lxqt-policykit-agent
 
 set $mod Mod4
@@ -15,7 +13,7 @@ smart_borders on
 default_border pixel 1
 default_floating_border pixel 1
 
-font pango:Comic Shanns Mono 8
+font pango:Cascadia Mono 8
 
 set $ws1 "1"
 set $ws2 "2"

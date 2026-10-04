@@ -3,7 +3,12 @@ set -euo pipefail
 
 sudo dnf install -y @development-tools
 sudo dnf install -y wget curl openssh
+
 if [[ "$(uname -m)" == x86_64 ]]; then
+    if ! grep -Rqs '^\[sublime-text\]$' /etc/yum.repos.d; then
+        sudo rpm --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
+        sudo dnf config-manager addrepo --from-repofile=https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
+    fi
     sudo dnf install -y sublime-text
 fi
 
