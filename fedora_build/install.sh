@@ -3,7 +3,6 @@ set -euo pipefail
 
 script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 components=(audio bluetooth dev fonts media network terminal web window_manager)
-final_steps=(systemctl stow)
 all_scripts=("${components[@]}" "${final_steps[@]}")
 
 validate_scripts() {
@@ -33,17 +32,14 @@ run_script() {
     fi
 }
 
-if [[ "${EUID}" -eq 0 ]] || [[ ! -r /etc/debian_version ]] || ! command -v apt-get >/dev/null 2>&1; then
-    printf 'Run this installer as a regular user on Debian Linux.\n' >&2
+if [[ "${EUID}" -eq 0 ]] || [[ ! -r /etc/fedora-release ]] || ! command -v dnf >/dev/null 2>&1; then
+    printf 'Run this installer as a regular user on Fedora Linux.\n' >&2
     exit 1
 fi
 
 if ! validate_scripts; then
     exit 1
 fi
-
-sudo apt-get update
-sudo apt-get install -y git stow ca-certificates
 
 for component in "${components[@]}"; do
     run_script "$component"

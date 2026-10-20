@@ -1,5 +1,7 @@
 [[ $- != *i* ]] && return
 
+export PATH="$HOME/.local/bin:$PATH"
+
 # Git branch
 git_branch() {
   branch=$(git branch --show-current 2>/dev/null)
@@ -23,9 +25,3 @@ alias u="sudo dnf update && sudo dnf upgrade"
 alias s="sudo dnf search"
 alias i="sudo dnf install"
 alias r="sudo dnf remove"
-
-alias vim="vimx"
-
-# >>> Codex installer >>>
-export PATH="$HOME/.local/bin:$PATH"
-# <<< Codex installer <<<
