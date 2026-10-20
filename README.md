@@ -25,3 +25,5 @@ bash fedora_build/stow.sh
 ```
 
 GNU Stow reports other conflicting files and leaves them in place. Move or back them up, then run the command again.
+
+cat pulp cover wrong key library network party waste venue afford excite join dry camera assume lucky metal whale laptop excess job plug party sleep
