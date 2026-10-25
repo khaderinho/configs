@@ -12,7 +12,6 @@ set incsearch
 
 set autoindent
 set autoread
-set cin
 
 set noerrorbells
 set noswapfile
