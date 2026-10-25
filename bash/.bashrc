@@ -1,6 +1,7 @@
 [[ $- != *i* ]] && return
 
 export PATH="$HOME/.local/bin:$PATH"
+export EDITOR='vim'
 
 # Git branch
 git_branch() {
@@ -21,7 +22,7 @@ alias ls="ls --color"
 alias ll="ls -ll"
 alias la="ls -la"
 
-alias u="sudo dnf update && sudo dnf upgrade"
-alias s="sudo dnf search"
-alias i="sudo dnf install"
-alias r="sudo dnf remove"
+alias u="sudo apt update && sudo apt upgrade"
+alias s="sudo apt search"
+alias i="sudo apt install"
+alias r="sudo apt remove"
